@@ -1,6 +1,6 @@
 import { IsString, IsEmail, IsEnum, IsNotEmpty } from 'class-validator';
 import { Role, Gender, Status } from '../schema/users.schemas';
-import { OmitType } from '@nestjs/mapped-types';
+import { OmitType, PickType } from '@nestjs/mapped-types';
 
 class UserDto {
   @IsString()
@@ -33,3 +33,4 @@ class UserDto {
 }
 
 export class CreateUserDto extends OmitType(UserDto, ['id']) {}
+export class LoginUserDto extends PickType(UserDto, ['email', 'password']) {}
