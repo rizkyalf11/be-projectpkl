@@ -4,14 +4,22 @@ import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from './users/users.module';
 import { User, UserSchema } from './users/schema/users.schemas';
+import { JwtModule } from '@nestjs/jwt';
+import { ConfigModule } from '@nestjs/config';
+import { MongoDBConfigAsync } from './config/mongodb.config';
+import { jwtConfigAsync } from './config/jwt.config';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(
-      'mongodb+srv://akunikky11:EV4he5UzAXT5EptR@cluster0.kcviq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
-    ),
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+    JwtModule.registerAsync(jwtConfigAsync),
+    MongooseModule.forRootAsync(MongoDBConfigAsync),
     MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
     UsersModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
