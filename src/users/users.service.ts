@@ -27,6 +27,6 @@ export class UsersService extends BaseResponse {
     const createdCat = new this.userModel(payload);
     await createdCat.save();
 
-    return this._success('Data berhasil ditemukan', createdCat);
+    return this._success('Registrasi Berhasil!', createdCat);
   }
 }

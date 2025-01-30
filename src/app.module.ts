@@ -9,6 +9,7 @@ import { ConfigModule } from '@nestjs/config';
 import { MongoDBConfigAsync } from './config/mongodb.config';
 import { jwtConfigAsync } from './config/jwt.config';
 import { AuthModule } from './auth/auth.module';
+import { AdminModule } from './admin/admin.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { AuthModule } from './auth/auth.module';
     MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
     UsersModule,
     AuthModule,
+    AdminModule,
   ],
   controllers: [AppController],
   providers: [AppService],
