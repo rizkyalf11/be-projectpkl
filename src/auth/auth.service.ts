@@ -69,7 +69,10 @@ export class AuthService extends BaseResponse {
         this.configService.get('JWT_SECRET'),
       );
 
-      return this._success('Login Berhasil', { ...findUser, access_token });
+      return this._success('Login Berhasil', {
+        ...findUser.toObject(),
+        access_token,
+      });
     } else {
       throw new HttpException(
         'Email dan Password tidak sama',
