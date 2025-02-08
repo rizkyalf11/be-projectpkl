@@ -15,7 +15,7 @@ async function bootstrap() {
       },
     }),
   );
-  app.enableCors();
+  app.enableCors({ credentials: true });
   await app.listen(process.env.PORT);
   console.log(`jalan bro di 3040`);
 }
