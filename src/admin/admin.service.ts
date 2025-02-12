@@ -1,11 +1,11 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Admin } from './admin.schema';
+import { Admin } from './schema/admin.schema';
 import { Model } from 'mongoose';
 import BaseResponse from 'src/utils/response/base.response';
 import { hash } from 'bcrypt';
 import { ResponseSuccess } from 'src/interface/response';
-import { CreateAdminDto } from './admin.dto';
+import { CreateAdminDto } from './dto/admin.dto';
 import { User } from 'src/users/schema/users.schemas';
 
 @Injectable()

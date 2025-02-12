@@ -10,6 +10,7 @@ import { MongoDBConfigAsync } from './config/mongodb.config';
 import { jwtConfigAsync } from './config/jwt.config';
 import { AuthModule } from './auth/auth.module';
 import { AdminModule } from './admin/admin.module';
+import { AbsensiModule } from './absensi/absensi.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { AdminModule } from './admin/admin.module';
     UsersModule,
     AuthModule,
     AdminModule,
+    AbsensiModule,
   ],
   controllers: [AppController],
   providers: [AppService],
