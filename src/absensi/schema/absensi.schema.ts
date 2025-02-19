@@ -13,7 +13,7 @@ type KehadiranItem = {
 type Kehadiran = {
   id: Types.ObjectId;
   nama: string;
-  kehadiran: KehadiranItem[];
+  kehadiran_user_detail: KehadiranItem[];
 };
 
 @Schema({ timestamps: true })
@@ -24,17 +24,25 @@ export class LembarAbsensi {
   @Prop({ type: Date, required: true })
   sampai_tgl: Date;
 
+  @Prop({ type: Array, required: true })
+  tgl_list: string[];
+
+  @Prop({ type: Array, default: [] })
+  tgl_free_list: string[];
+
   @Prop({
     type: [
       {
         id: Types.ObjectId,
         nama: String,
-        kehadiran: [{ tgl: String, status: String, tgl_lengkap: String }],
+        kehadiran_user_detail: [
+          { tgl: String, status: String, tgl_lengkap: String },
+        ],
       },
     ],
     default: [],
   })
-  kehadiran: Kehadiran[];
+  kehadiran_user: Kehadiran[];
 }
 
 export const LembarAbsensiSchema = SchemaFactory.createForClass(LembarAbsensi);

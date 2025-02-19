@@ -19,12 +19,16 @@ export class AbsensiController {
 
   @UseGuards(JwtGuard)
   @Post('/create')
-  async create(
-    @Body() createLembarAbsensiDto: CreateLembarAbsensiDto,
-  ): Promise<LembarAbsensi> {
+  async create(@Body() createLembarAbsensiDto: CreateLembarAbsensiDto) {
     return this.lembarAbsensiService.createLembarAbsensi(
       createLembarAbsensiDto,
     );
+  }
+
+  @UseGuards(JwtGuard)
+  @Get('/getall')
+  async getLembaraKehadiran() {
+    return this.lembarAbsensiService.getLembarkehadiran();
   }
 
   @UseGuards(JwtGuard)
@@ -42,13 +46,13 @@ export class AbsensiController {
     );
   }
 
-  @Get()
-  async getAll(): Promise<LembarAbsensi[]> {
-    return this.lembarAbsensiService.getAllLembarAbsensi();
-  }
-
   @Get('/:id')
   async getOne(@Param('id') id: string): Promise<LembarAbsensi> {
     return this.lembarAbsensiService.getLembarAbsensi(id);
+  }
+
+  @Get('/user/dataabsen/:id')
+  async getDataAbsenUser(@Param('id') id: string) {
+    return this.lembarAbsensiService.getDataAbsenUser(id);
   }
 }

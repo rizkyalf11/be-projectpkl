@@ -35,5 +35,8 @@ export class CreateLembarAbsensiDto {
   sampai_tgl: Date;
 
   @IsOptional()
+  tgl_free_list: [];
+
+  @IsOptional()
   kehadiran?: KehadiranDto[];
 }
